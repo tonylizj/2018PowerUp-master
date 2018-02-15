@@ -1,0 +1,44 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="DriveStraightGyro" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="245"/>
+	</widget>
+	<widget field="Auto mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="0" y="201"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
+		<location x="0" y="0"/>
+	</static-widget>
+</dashboard>
+<live-window>
+	<widget field="Drivetrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="0" y="370"/>
+	</widget>
+	<widget field="ExampleSubsystem" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="0" y="48"/>
+	</widget>
+	<widget field="DriveTrain4VictorEncGyro" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<location x="0" y="24"/>
+	</widget>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Encoder[1]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="16"/>
+			<height>98</height>
+			<width>250</width>
+		</widget>
+		<widget field="ADXRS450_Gyro[0]" type="Gyro" class="edu.wpi.first.smartdashboard.gui.elements.Compass">
+			<location x="6" y="114"/>
+			<height>150</height>
+			<width>250</width>
+		</widget>
+		<widget field="Encoder[0]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="264"/>
+			<height>98</height>
+			<width>250</width>
+		</widget>
+		<location x="0" y="0"/>
+		<width>262</width>
+		<height>369</height>
+	</widget>
+</live-window>
+</xml>
