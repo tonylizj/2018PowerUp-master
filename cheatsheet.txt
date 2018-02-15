@@ -1,0 +1,68 @@
+ElectricalConstants
+sets where the parts of the robot are (the ports)
+^includes drivetrain, encoders, arm motors, arm solenoids, elevator motors
+presents the size and parameters of the wheels
+
+
+NumberConstants
+sets constants used in the robot
+^includes pid values, gyro values, elevator speeds
+
+
+OI
+binds controller to software that allows control of the robot
+uses port of controller from ElectricalConstants
+assigns buttons to commands
+
+Robot
+initializes subsystems: drive, elevator
+
+
+
+Subsystems
+
+DriveTrain
+uses encoder, gyro, pids
+initializes ports of motors, gyro, encoders
+setter methods for the power of the motors
+getter methods for utilizing the encoder (getDistance) and the gyro (getYaw)
+autonomous using pids and commands (distance, speed, angle, acceptable range of error)
+
+Elevator
+initializes ports of elevator motors
+set elevator speed and direction, or stop elevator
+
+intake
+declare motors arms
+set speed of arm/clamp movement
+set direction of arm movement
+
+
+
+commands
+arcadedrive
+uses drivetrain to move robot
+binsd directly to controller
+reads input from controller and makes robot move
+
+elevator up/down
+moves elevator up and down, uses speed in numerical constats
+uses elevator subsystem
+
+extend up/down/hold
+uses elevator subsystem to control the extender movement
+
+elevator pushforward/back
+uses elevator subsystem to move the elevator along the rail
+
+
+
+autocommands
+drivestraightgyro
+uses drivetrain to move robot forward at a given angle for auto
+
+turngyro
+uses drivetrain and gyro to get angle that robot is moving in
+
+left/middle/right auto
+command groups for our auto paths, separated based on starting position
