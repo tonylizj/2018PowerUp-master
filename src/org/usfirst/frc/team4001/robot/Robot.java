@@ -19,7 +19,7 @@ import org.usfirst.frc.team4001.robot.commands.ElevatorResetZero;
 import org.usfirst.frc.team4001.robot.subsystems.DriveTrain4Talon;
 import org.usfirst.frc.team4001.robot.subsystems.Elevator;
 import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4001.robot.subsystems.Intake;
+//import org.usfirst.frc.team4001.robot.subsystems.Intake;
 
 import com.team4001.lib.util.PreferenceChanger;
 
@@ -35,8 +35,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static DriveTrain4Talon drive; //TODO verify this is the correct drivetrain subsystem
 	public static Elevator elevator;
-	public static Intake intake;
-	
+	//public static Intake intake;
 	public static OI oi;
 
 	private PreferenceChanger preference;
@@ -55,7 +54,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		drive = new DriveTrain4Talon(); 
 		elevator = new Elevator();
-		intake = new Intake();
+		//intake = new Intake();
 		oi = new OI();
 		preference = new PreferenceChanger();
 		chooser = new SendableChooser<String>();

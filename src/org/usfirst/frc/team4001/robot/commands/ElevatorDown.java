@@ -24,12 +24,14 @@ public class ElevatorDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
     	if (Robot.elevator.getElevatorLimit()) {
     		Robot.elevator.elevatorHardStop();
     	}
     	else {
+    	*/
     		Robot.elevator.setElevatorSpeed(-1*NumberConstants.elevatorSpeed);
-    	}	
+    	//}	
     }
 
     // Make this return true when this Command no longer needs to run execute()

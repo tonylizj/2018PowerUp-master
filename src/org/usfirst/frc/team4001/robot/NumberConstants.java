@@ -37,7 +37,7 @@ public class NumberConstants {
 	
 	//public static final double elevatorMaxVoltage  						 = 0.5;
 	public static final double elevatorSpeed							 = 1;	
-	public static final double extendSpeed								 = 0.3;
+	public static final double extendSpeed								 = 0.5;
 	public static final double climbSpeed 								 = 0.5;
 
 	// ************************************************************************

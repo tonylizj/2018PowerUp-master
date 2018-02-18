@@ -36,12 +36,12 @@ public class Elevator extends Subsystem {
 	
 	public Elevator() {
 		elevatorMotor = new WPI_TalonSRX(ElectricalConstants.ELEVATOR_MOTOR);
-		elevatorMotor.set(ControlMode.Position, 1);
+		elevatorMotor.set(ControlMode.Position, 1000);
 		
 		pushMotor = new Victor(ElectricalConstants.PUSH_MOTOR);
 		
 		extendMotor = new WPI_TalonSRX(ElectricalConstants.EXTEND_MOTOR);
-		extendMotor.set(ControlMode.Position, 1);
+		extendMotor.set(ControlMode.Position, 0);
 		//climbMotor = new WPI_TalonSRX(ElectricalConstants.CLIMB_MOTOR);
 		
 		
@@ -109,11 +109,19 @@ public class Elevator extends Subsystem {
 	 * Reset the encoder position value to zero.
 	 */
 	public void zeroEncoderPosition(){
-		elevatorMotor.setSelectedSensorPosition(0, 0, 10);
+		elevatorMotor.setSelectedSensorPosition(0, 0, 0);
 	}
 	
 	public void setExtendSpeed(double speed){
 		extendMotor.set(speed);
+	}
+	
+	public int getEncPosition(){
+		return elevatorMotor.getSelectedSensorPosition(0);
+	}
+	
+	public void setEncPosition(int position){
+		elevatorMotor.set(ControlMode.Position, position);
 	}
 	/*
 	public void setClimbSpeed(double speed) {

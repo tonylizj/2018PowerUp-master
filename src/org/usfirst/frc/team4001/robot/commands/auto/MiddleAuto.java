@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4001.robot.commands.auto;
 
-import org.usfirst.frc.team4001.robot.commands.RollOutArms;
+//import org.usfirst.frc.team4001.robot.commands.RollOutArms;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -23,12 +23,12 @@ public class MiddleAuto extends CommandGroup {
     		addSequential(new DriveStraightGyro(83));
     		addSequential(new TurnGyro(90));
     		addSequential(new DriveStraightGyro(80));
-    		addSequential(new RollOutArms());
+    		//addSequential(new RollOutArms());
     	}
     	else{
     		System.out.println("The auto running is for the right side switch");
     		addSequential(new DriveStraightGyro(118.5966));
-    		addSequential(new RollOutArms());
+    		//addSequential(new RollOutArms());
     	}
    
         // Add Commands here:

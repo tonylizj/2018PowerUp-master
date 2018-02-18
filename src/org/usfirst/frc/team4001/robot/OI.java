@@ -29,6 +29,7 @@ public class OI {
 
 	private JoystickButton pushForwardButton;
 	private AxisButton pushBackButton;
+	private JoystickButton goToZone1;
 
 	private JoystickButton rollInButton;
 	private JoystickButton rollOutButton;
@@ -61,23 +62,28 @@ public class OI {
 		extendDownButton = game_controller.getButtonA();
 		extendDownButton.whileHeld(new ExtendDown());
 		
+		/*
 		pushForwardButton = game_controller.getLeftShoulder();
 		pushForwardButton.whileHeld(new ElevatorPushForward());
+		*/
 		
 		pushBackButton = game_controller.getLeftTriggerClick();
 		pushBackButton.whileHeld(new ElevatorPushBack());
+		
+		goToZone1 = game_controller.getLeftShoulder();
+		goToZone1.whenPressed(new goToZone1());
 
 		//secondary controller
 		
-		rollInButton = secondary_controller.getButtonY();
-		rollInButton.whileHeld(new RollInArms());
+		//rollInButton = secondary_controller.getButtonY();
+		//rollInButton.whileHeld(new RollInArms());
 
 		
-		rollOutButton = secondary_controller.getButtonB();
-		rollOutButton.whileHeld(new RollOutArms());
+		//rollOutButton = secondary_controller.getButtonB();
+		//rollOutButton.whileHeld(new RollOutArms());
 		
-		climbButton = secondary_controller.getButtonA();
-		climbButton.whileHeld(new ClimbUp());
+		//climbButton = secondary_controller.getButtonA();
+		//climbButton.whileHeld(new ClimbUp());
 
 		// TODO bind game_controller buttons to commands
 	

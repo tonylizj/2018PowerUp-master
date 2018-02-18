@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-
+/*
 public class Intake extends Subsystem {
 
     private WPI_TalonSRX leftArm;
@@ -66,5 +66,6 @@ public class Intake extends Subsystem {
     }
         
 }
+*/
 
 
