@@ -55,6 +55,9 @@ uses elevator subsystem to control the extender movement
 elevator pushforward/back
 uses elevator subsystem to move the elevator along the rail
 
+climb
+uses elevator subsystem to set motor speed and climb
+
 
 
 autocommands
