@@ -2,6 +2,7 @@ package org.usfirst.frc.team4001.robot.commands.auto;
 
 import org.usfirst.frc.team4001.robot.Robot;
 //import org.usfirst.frc.team4001.robot.commands.RollOutArms;
+import org.usfirst.frc.team4001.robot.commands.RollOutArms;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -21,7 +22,7 @@ public class RightAuto extends CommandGroup {
     		addSequential(new DriveStraightGyro(165.354));
     		addSequential(new TurnGyro(-90));
     		addSequential(new DriveStraightGyro(19.2913));
-    		//addSequential(new RollOutArms());
+    		addSequential(new RollOutArms());
     	}
     	else if(gameData.charAt(1) == 'R'){
     		System.out.println("Auto running for right side scale");
@@ -31,12 +32,14 @@ public class RightAuto extends CommandGroup {
     	}
     	else if(gameData.charAt(0) == 'L'){
     		System.out.println("Auto running for left side switch");
-    		addSequential(new DriveStraightGyro(225.9845));
+    		addSequential(new DriveStraightGyro(225.70866));
     		addSequential(new TurnGyro(-90));
-    		//addSequential(new DriveStraightGyro(?)); waiting to receive values before continuing
+    		addSequential(new DriveStraightGyro(181.8901)); 
     		addSequential(new TurnGyro(-90));
-    		//addSequential(new DriveStraightGyro(?)); waiting to receive values before continuing
-    		//addSequential(new RollOutArms());
+    		addSequential(new DriveStraightGyro(60.62994)); 
+    		addSequential(new TurnGyro(-90));
+    		addSequential(new DriveStraightGyro(11.0236));
+    		addSequential(new RollOutArms());
     	}
     	else if(gameData.charAt(1) == 'L'){
     		System.out.println("Auto running for left side scale");

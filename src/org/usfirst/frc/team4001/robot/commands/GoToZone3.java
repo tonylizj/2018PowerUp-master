@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4001.robot.commands;
 
-import org.usfirst.frc.team4001.robot.NumberConstants;
 import org.usfirst.frc.team4001.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,10 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 
+public class GoToZone3 extends Command {
 
-public class ElevatorDown extends Command {
-
-    public ElevatorDown() {
+    public GoToZone3() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.elevator);
@@ -24,19 +22,17 @@ public class ElevatorDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	if (Robot.elevator.getElevatorLimit()) {
-    		Robot.elevator.elevatorHardStop();
+    	if(Robot.elevator.getElevatorLimit()){
+    		Robot.elevator.elevatorHardStop();;
     	}
-    	else {
-    	
-    		Robot.elevator.setElevatorSpeed(-NumberConstants.elevatorSpeed);
-    	}	
+    	else{
+    	Robot.elevator.setEncPosition(32091);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false;	
     }
 
     // Called once after isFinished returns true
@@ -49,6 +45,5 @@ public class ElevatorDown extends Command {
     protected void interrupted() {
     	Robot.elevator.elevatorHardStop();
     }
-    
 }
 

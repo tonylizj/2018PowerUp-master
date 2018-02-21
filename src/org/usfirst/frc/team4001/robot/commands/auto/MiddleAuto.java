@@ -1,5 +1,9 @@
 package org.usfirst.frc.team4001.robot.commands.auto;
 
+
+
+import org.usfirst.frc.team4001.robot.commands.RollOutArms;
+
 //import org.usfirst.frc.team4001.robot.commands.RollOutArms;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -18,18 +22,23 @@ public class MiddleAuto extends CommandGroup {
     	
     	if(gameData.charAt(0) == 'L'){
     		System.out.println("The auto running is for the left side switch");
-    		addSequential(new DriveStraightGyro(66));
+
+    		addSequential(new DriveStraightGyro(63));
     		addSequential(new TurnGyro(-90));
-    		addSequential(new DriveStraightGyro(83));
+    		addSequential(new DriveStraightGyro(84));
     		addSequential(new TurnGyro(90));
-    		addSequential(new DriveStraightGyro(80));
-    		//addSequential(new RollOutArms());
-    	}
-    	else{
+    		addSequential(new DriveStraightGyro(7));
+    		addSequential(new RollOutArms());
+    	} else {
     		System.out.println("The auto running is for the right side switch");
-    		addSequential(new DriveStraightGyro(118.5966));
-    		//addSequential(new RollOutArms());
-    	}
+    		addSequential(new DriveStraightGyro(38.5));
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(32.2));
+    		addSequential(new TurnGyro(-90));
+    		addSequential(new DriveStraightGyro(102.2));
+    		addSequential(new RollOutArms());
+    	} 
+    	
    
         // Add Commands here:
         // e.g. addSequential(new Command1());

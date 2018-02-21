@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-/*
+
 public class Intake extends Subsystem {
 
     private WPI_TalonSRX leftArm;
@@ -29,13 +29,13 @@ public class Intake extends Subsystem {
   
     public void armsRollIn()
     {
-    	leftArm.set(NumberConstants.rollInSpeed);
+    	leftArm.set(-NumberConstants.rollInSpeed);
     	rightArm.set(NumberConstants.rollInSpeed);
     }
   
     public void armsRollOut() 
     {
-    	leftArm.set(NumberConstants.rollOutSpeed);
+    	leftArm.set(-NumberConstants.rollOutSpeed);
     	rightArm.set(NumberConstants.rollOutSpeed);
     }
 
@@ -66,6 +66,6 @@ public class Intake extends Subsystem {
     }
         
 }
-*/
+
 
 

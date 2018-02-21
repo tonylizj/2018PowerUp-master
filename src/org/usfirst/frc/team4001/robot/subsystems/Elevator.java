@@ -4,12 +4,14 @@ import org.usfirst.frc.team4001.robot.ElectricalConstants;
 import org.usfirst.frc.team4001.robot.NumberConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,6 +24,8 @@ public class Elevator extends Subsystem {
 
 	private WPI_TalonSRX elevatorMotor;
 	private WPI_TalonSRX extendMotor;
+	private WPI_TalonSRX climbMotor1;
+	private WPI_TalonSRX climbMotor2;
 
 	private Victor pushMotor;
 
@@ -36,13 +40,22 @@ public class Elevator extends Subsystem {
 	
 	public Elevator() {
 		elevatorMotor = new WPI_TalonSRX(ElectricalConstants.ELEVATOR_MOTOR);
-		elevatorMotor.set(ControlMode.Position, 1000);
+		elevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		//elevatorMotor.set(ControlMode.Position, 0);
+		
+		
+		elevatorMotor.config_kF(0, 0, 0);
+		elevatorMotor.config_kP(0,0.1,0);
+		elevatorMotor.config_kI(0, 0, 0);
+		elevatorMotor.config_kD(0, 0, 0);
+		
 		
 		pushMotor = new Victor(ElectricalConstants.PUSH_MOTOR);
 		
 		extendMotor = new WPI_TalonSRX(ElectricalConstants.EXTEND_MOTOR);
-		extendMotor.set(ControlMode.Position, 0);
-		//climbMotor = new WPI_TalonSRX(ElectricalConstants.CLIMB_MOTOR);
+		//extendMotor.set(ControlMode.Position, 0);
+		climbMotor1 = new WPI_TalonSRX(ElectricalConstants.CLIMB_MOTOR1);
+		climbMotor2 = new WPI_TalonSRX(ElectricalConstants.CLIMB_MOTOR2);
 		
 		
 		elevatorLimit = new DigitalInput(ElectricalConstants.CUBE_LIFT_LIMIT);
@@ -97,10 +110,6 @@ public class Elevator extends Subsystem {
 	}
 	*/
 	
-	public int getEncoderVal() {
-		return elevatorMotor.getSensorCollection().getQuadraturePosition();
-	}
-	
 	public void setToHome() {
 	//	elevatorMotor.getSensorCollection().setQuadraturePosition(, );
 	}
@@ -116,13 +125,26 @@ public class Elevator extends Subsystem {
 		extendMotor.set(speed);
 	}
 	
+	public void setClimbSpeed(double speed){
+		climbMotor1.set(speed);
+		climbMotor2.set(speed);
+	}
+	
+	
 	public int getEncPosition(){
 		return elevatorMotor.getSelectedSensorPosition(0);
 	}
 	
+	/**
+	 * Move the motor to a specified position.
+	 * @param position The position to move to
+	 */
 	public void setEncPosition(int position){
 		elevatorMotor.set(ControlMode.Position, position);
 	}
+	
+	
+	
 	/*
 	public void setClimbSpeed(double speed) {
 		climbMotor.set(speed);
@@ -140,11 +162,12 @@ public class Elevator extends Subsystem {
 	public void pusherHardStop(){
 		pushMotor.set(0);
 	}
-	/*
+	
 	public void climbHardStop() {
-		climbMotor.set(0);
+		climbMotor1.set(0);
+		climbMotor2.set(0);
 	}
-	*/
+	
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

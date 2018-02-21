@@ -175,7 +175,7 @@ public class PIDController {
 
 		// PID Output
 		output = pOut + iOut + dOut;
-		System.out.println("PID Controller output:" + output);
+		//System.out.println("PID Controller output:" + output);
 
 		// Scale output to be between 1 and -1
 		if (output != 0.0)

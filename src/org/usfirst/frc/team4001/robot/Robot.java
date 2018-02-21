@@ -9,17 +9,16 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4001.robot.commands.DriveStraight;
-import org.usfirst.frc.team4001.robot.commands.ElevatorPushBack;
-import org.usfirst.frc.team4001.robot.commands.ElevatorPushForward;
+import org.usfirst.frc.team4001.robot.commands.*;
+import org.usfirst.frc.team4001.robot.commands.auto.DriveStraightGyro;
 import org.usfirst.frc.team4001.robot.commands.auto.LeftAuto;
 import org.usfirst.frc.team4001.robot.commands.auto.MiddleAuto;
 import org.usfirst.frc.team4001.robot.commands.auto.RightAuto;
-import org.usfirst.frc.team4001.robot.commands.ElevatorResetZero;
 import org.usfirst.frc.team4001.robot.subsystems.DriveTrain4Talon;
 import org.usfirst.frc.team4001.robot.subsystems.Elevator;
 import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
 //import org.usfirst.frc.team4001.robot.subsystems.Intake;
+import org.usfirst.frc.team4001.robot.subsystems.Intake;
 
 import com.team4001.lib.util.PreferenceChanger;
 
@@ -35,9 +34,8 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static DriveTrain4Talon drive; //TODO verify this is the correct drivetrain subsystem
 	public static Elevator elevator;
-	//public static Intake intake;
+	public static Intake intake;
 	public static OI oi;
-
 	private PreferenceChanger preference;
 
 
@@ -54,7 +52,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		drive = new DriveTrain4Talon(); 
 		elevator = new Elevator();
-		//intake = new Intake();
+		intake = new Intake();
 		oi = new OI();
 		preference = new PreferenceChanger();
 		chooser = new SendableChooser<String>();
@@ -66,6 +64,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Zero Elevator",new ElevatorResetZero());
 		SmartDashboard.putData("Push Forward", new ElevatorPushForward());
 		SmartDashboard.putData("Push Back", new ElevatorPushBack());
+
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
 	}
@@ -98,9 +97,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new DriveStraight();
-		/*
-		if(chooser.getSelected().equals("Left")){	
+		autonomousCommand = new DriveStraightGyro(100);
+		/*if(chooser.getSelected().equals("Left")){	
 			autonomousCommand = new LeftAuto();
 		}
 		else if(chooser.getSelected().equals("Middle")){
@@ -110,9 +108,10 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new RightAuto();
 		}
 		*/
+		
+		
 		autonomousCommand.start();
 	}
-		
 
 	/**
 	 * This function is called periodically during autonomous
@@ -140,6 +139,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		SmartDashboard.putNumber("Encoder Value", Robot.elevator.getEncPosition());
 		Scheduler.getInstance().run();
 	}
 

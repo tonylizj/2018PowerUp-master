@@ -48,9 +48,8 @@ public class DriveTrain4Talon extends DriveTrain {
 		drivePID = new PIDController(NumberConstants.pDrive, NumberConstants.iDrive, NumberConstants.dDrive);
 		gyroPID = new PIDController(NumberConstants.pGyro, NumberConstants.iGyro, NumberConstants.dGyro);
 		
-		leftEncoder = new Encoder(6,7,false, EncodingType.k4X);
-		
-		rightEncoder = new Encoder(8,9,false, EncodingType.k4X);
+		leftEncoder = new Encoder(ElectricalConstants.LEFT_DRIVE_ENCODER_A,ElectricalConstants.LEFT_DRIVE_ENCODER_B,ElectricalConstants.leftDriveTrainEncoderReverse, EncodingType.k4X);
+		rightEncoder = new Encoder(ElectricalConstants.RIGHT_DRIVE_ENCODER_A,ElectricalConstants.RIGHT_DRIVE_ENCODER_B,ElectricalConstants.rightDriveTrainEncoderReverse, EncodingType.k4X);
 		
 		leftMotors = new SpeedControllerGroup(upperLeftMotor, bottomLeftMotor);
 		rightMotors = new SpeedControllerGroup(upperRightMotor, bottomRightMotor);
@@ -83,12 +82,17 @@ public class DriveTrain4Talon extends DriveTrain {
 		return gyro.getAngle();
 	}
 	
+	public void resetPID(){
+		drivePID.resetPID();
+		gyroPID.resetPID();
+	}
+	
 	public void driveStraight(double setPoint, double speed, double setAngle, double epsilon) {
 		double output = drivePID.calcPIDDrive(setPoint, getAverageDistance(), epsilon);
 		double angle = gyroPID.calcPID(setAngle, getYaw(), epsilon);
 		
-		runLeftDrive(-(output + angle) * speed);
-		runRightDrive(-(-output + angle) * speed);
+		runLeftDrive((output + angle) * speed);
+		runRightDrive((output + angle) * speed);
 	}
 }
 

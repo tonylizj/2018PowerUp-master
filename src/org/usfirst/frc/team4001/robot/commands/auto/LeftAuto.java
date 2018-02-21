@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4001.robot.commands.auto;
 
-import org.usfirst.frc.team4001.robot.Robot;
+import org.usfirst.frc.team4001.robot.commands.RollOutArms;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -18,16 +18,38 @@ public class LeftAuto extends CommandGroup {
     	System.out.println(gameData);
     	
     	if(gameData.charAt(0) == 'L'){
-    		System.out.println("spooky ghosts");
+    		System.out.println("Auto running for right side switch");
+    		addSequential(new DriveStraightGyro(165.354));
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(19.2913));
+    		addSequential(new RollOutArms());
     	}
     	else if(gameData.charAt(1) == 'L'){
     		System.out.println("Auto running for left side scale");
+    		addSequential(new DriveStraightGyro(325.1968));
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(8.2677));
     	}
     	else if(gameData.charAt(0) == 'R'){
-    		System.out.println("beware of the code ghosts");
+       		System.out.println("Auto running for right side switch");
+    		addSequential(new DriveStraightGyro(225.70866));
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(181.8901)); 
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(60.62994)); 
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(11.0236));
+    		addSequential(new RollOutArms());
     	}
     	else if(gameData.charAt(1) == 'R'){
     		System.out.println("Auto running for right side scale");
+    		addSequential(new DriveStraightGyro(225.9845));
+    		addSequential(new TurnGyro(90));
+    		addSequential(new DriveStraightGyro(195.6696));
+    		addSequential(new TurnGyro(-90));
+    		addSequential(new DriveStraightGyro(121.8683));
+    		addSequential(new TurnGyro(-90));
+    		addSequential(new DriveStraightGyro(8.2677));	
     	}
     	else{
     		System.out.println("Auto running to move forward");

@@ -10,8 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveStraightGyro extends Command {
 	
-
-	double setPoint = 0;
+	double setPoint;
 	double speed = 0.5;
 	double setAngle = 0;
 	double epsilon = 1;
@@ -35,9 +34,10 @@ public class DriveStraightGyro extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
+/*
     	System.out.println("Set Point" + setPoint);
     	System.out.println("Speed: " + speed);
+    	*/
     	Robot.drive.driveStraight(setPoint, speed, setAngle, epsilon);
     }
 

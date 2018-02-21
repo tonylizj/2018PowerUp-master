@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-/*
+
 public class RollOutArms extends Command {
 
     public RollOutArms() {
@@ -41,4 +41,3 @@ public class RollOutArms extends Command {
     	Robot.intake.hardStopRoll();
     }
 }
-*/
