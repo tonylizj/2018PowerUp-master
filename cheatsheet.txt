@@ -45,19 +45,30 @@ uses drivetrain to move robot
 binsd directly to controller
 reads input from controller and makes robot move
 
-elevator up/down
+elevator up/down/resetzero
 moves elevator up and down, uses speed in numerical constats
 uses elevator subsystem
 
 extend up/down/hold
 uses elevator subsystem to control the extender movement
+makes elevator tall enough to place cube on scale
+hold is for fine movement
 
 elevator pushforward/back
 uses elevator subsystem to move the elevator along the rail
+moving the rail back helps robot balance when holding cube
+
+rollout/rollinarms
+uses intake subsystem to move arms
+picks up cubes
 
 climb
 uses elevator subsystem to set motor speed and climb
+used to climb at end of match
 
+gotozonehome/1/2/3
+moves elevator to preset elevations
+makes it easier to move elevator to grab elevated cubes/reset to lowerst position
 
 
 autocommands
