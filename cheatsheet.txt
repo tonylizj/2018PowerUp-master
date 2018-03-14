@@ -1,30 +1,30 @@
-##/robot
+/robot
 
-  ######ElectricalConstants
+  ElectricalConstants
   sets where the parts of the robot are (the ports)
   includes drivetrain, encoders, arm motors, arm solenoids, elevator motors
   presents the size and parameters of the wheels
 
 
-  ######NumberConstants
+  NumberConstants
   sets constants used in the robot
   includes pid values, gyro values, elevator speeds
 
 
-  ######OI
+  OI
   binds controller to software that allows control of the robot
   uses port of controller from ElectricalConstants
   assigns buttons to commands
 
 
-  ######Robot
+  Robot
   initializes subsystems: drive, elevator
 
 
 
-  ###/robot/subsystems
+  /robot/subsystems
 
-    ######DriveTrain
+    DriveTrain
     uses encoder, gyro, pids
     initializes ports of motors, gyro, encoders
     setter methods for the power of the motors
@@ -32,74 +32,74 @@
     autonomous using pids and commands (distance, speed, angle, acceptable range of error)
 
 
-    ######Elevator
+    Elevator
     initializes ports of elevator motors
     set elevator speed and direction, or stop elevator
 
 
-    ######intake
+    intake
     declare motors arms
     set speed of arm/clamp movement
     set direction of arm movement
 
 
 
-  ###/robot/commands
+  /robot/commands
 
-    ######ArcadeDrive
+    ArcadeDrive
     uses drivetrain to move robot
     binds directly to controller
     reads input from controller and makes robot move
 
 
-    ######ClimbUp
+    ClimbUp
     uses elevator subsystem to set motor speed and climb
     used to climb at end of match
 
 
-    ######DriveStraight
+    DriveStraight
     uses drivetrain to drive in a straight line for a certain distance
 
 
-    ######ElevatorUp/Down/ResetZero
+    ElevatorUp/Down/ResetZero
     moves elevator up and down, uses speed in numerical constants
     uses elevator subsystem
     ElevatorDown sets the speed to negative of normal speed
 
 
-    ######ElevatorPushForward/Back
+    ElevatorPushForward/Back
     uses elevator subsystem to move the elevator along the rail
     moving the rail back helps robot balance when holding cube
     ElevatorPushBack sets the speed to negative of normal speed
 
 
-    #######ExtendUp/Down/Hold
+    ExtendUp/Down/Hold
     uses elevator subsystem to control the extender movement, used speed in numerical constants
     makes elevator tall enough to place cube on scale
     ExtendDown sets the speed to negative of normal speed
 
 
-    ######GoToHome/Zone1/Zone2/Zone3
+    GoToHome/Zone1/Zone2/Zone3
     moves elevator to preset elevations
     makes it easier to move elevator to grab elevated cubes or reset to lowest position
 
 
-    ######RollOutArms/RollInArms
+    RollOutArms/RollInArms
     uses intake subsystem to move arms in or out
     picks up cubes
 
 
 
-    ####/robot/commands/auto
+    /robot/commands/auto
       
-      ######DriveStraightGyro
+      DriveStraightGyro
       uses drivetrain to move robot forward at a given angle, distance, speed, and margin for error
 
 
-      ######TurnGyro
+      TurnGyro
       uses drivetrain to turn the robot a certain angle
 
 
-      ######Left/Middle/RightAuto
+      Left/Middle/RightAuto
       command groups for auto paths, separated based on starting position
       uses other commands to automatically perform a series of actions
